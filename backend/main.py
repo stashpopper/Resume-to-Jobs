@@ -36,6 +36,12 @@ app = FastAPI(
     redoc_url="/redoc"
 )
 
+# Root route
+@app.get("/")
+async def root():
+    """Redirect to documentation."""
+    return RedirectResponse(url="/docs")
+
 # CORS middleware
 app.add_middleware(
     CORSMiddleware,
